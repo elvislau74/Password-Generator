@@ -17,48 +17,50 @@ function generatePassword(){
   // spread operator - pool.push(...)
   var numberofCharas = parseInt(prompt("How many characters do you want your password to have?"));
 
-if (!numberofCharas){
-  return window.alert("Password length must be provided as a number.");
-}
+  if (!numberofCharas){
+    return window.alert("Password length must be provided as a number.");
+  }
 
-//Click okay to confirm if you would like to include special characters
-var addSpecial = confirm("Would you like to include special characters?");
-if (addSpecial){
-  pool.push(specialCharaArray);
-}
-else {
-  return;
-}
-//Click okay to confirm if you would like to include numeric characters
-var addNumeric = confirm("Would you like to include numeric characters?");
-if (addNumeric){
-  pool.push(numbersArray);
-}
-else {
-  return;
-}
-//Click okay to confirm if you would like to include lowercase letters
-var addLower = confirm("Would you like to include lowercase characters?");
-if (addLower){
-  pool.push(lowerCaseArray);
-}
-else {
-  return;
-}
-//Click okay to confirm if you would like to include uppercase letters
-var addUpper = confirm("Would you like to include uppercase characters?");
-if (addUpper){
-  pool.push(upperCaseArray);
-}
-else {
-  return;
-}
+  //Click okay to confirm if you would like to include special characters
+  var addSpecial = confirm("Would you like to include special characters?");
+  if (addSpecial){
+    pool.concat(specialCharaArray);
+  }
+  else {
+    return;
+  }
+  //Click okay to confirm if you would like to include numeric characters
+  var addNumeric = confirm("Would you like to include numeric characters?");
+  if (addNumeric){
+    pool.concat(numbersArray);
+  }
+  else {
+    return;
+  }
+  //Click okay to confirm if you would like to include lowercase letters
+  var addLower = confirm("Would you like to include lowercase characters?");
+  if (addLower){
+    pool.concat(lowerCaseArray);
+  }
+  else {
+    return;
+  }
+  //Click okay to confirm if you would like to include uppercase letters
+  var addUpper = confirm("Would you like to include uppercase characters?");
+  if (addUpper){
+    pool.concat(upperCaseArray);
+  }
+  else {
+    return;
+  }
 
-for (var i = 0; i < numberofCharas.length; i++){
-  passwordGenerated.push(pool[math.floor(math.random()*pool.length)]);
-}
+  for (var i = 0; i < numberofCharas.length; i++){
+    passwordGenerated.push(pool[Math.floor(Math.random() * pool.length)]);
+  }
 
-return passwordGenerated;
+  // window.alert("Your password is " + passwordGenerated);
+
+  return passwordGenerated;
 }
 
 // Write password to the #password input
@@ -68,7 +70,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-  
 
 }
 
