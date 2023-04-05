@@ -6,10 +6,15 @@ function writePassword() {
   function generatePassword(){
     // Add pool of characters to use for password
     var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+    var lowerCaseArray = lowerCase.split("");
     var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var specialChara = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+    var upperCaseArray = lowerCase.split("");
+    var specialChara = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+    var specialCharaArray = lowerCase.split("");
     var numbers = "0123456789"
-    var pool = "";
+    var pool = [];
+    // pool.push(lowerCaseArray);
+    // spread operator - pool.push(...)
     var numberofCharas = parseInt(prompt("How many characters do you want your password to have?"));
 
 
