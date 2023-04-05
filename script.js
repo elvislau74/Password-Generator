@@ -4,62 +4,60 @@ var generateBtn = document.querySelector("#generate");
 function generatePassword(){
   // Add pool of characters to use for password
   var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-  var lowerCaseArray = lowerCase.split("");
   var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var upperCaseArray = lowerCase.split("");
   var specialChara = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
-  var specialCharaArray = lowerCase.split("");
   var numbers = "0123456789"
-  var numbersArray = numbers.split("");
   var pool = [];
   var passwordGenerated = [];
 
   // spread operator - pool.push(...)
   var numberofCharas = parseInt(prompt("How many characters do you want your password to have?"));
-
+  console.log(numberofCharas);
   if (!numberofCharas){
-    return window.alert("Password length must be provided as a number.");
+    return alert("Password length must be provided as a number.");
+  }
+  if (numberofCharas > 128){
+    return alert("Please choose a number less than 128.")
+  }
+  if (numberofCharas < 8){
+    return alert("Please choose a number more than 8.")
   }
 
   //Click okay to confirm if you would like to include special characters
   var addSpecial = confirm("Would you like to include special characters?");
   if (addSpecial){
-    pool.concat(specialCharaArray);
+    pool += specialChara;
   }
-  else {
-    return;
-  }
+   
   //Click okay to confirm if you would like to include numeric characters
   var addNumeric = confirm("Would you like to include numeric characters?");
   if (addNumeric){
-    pool.concat(numbersArray);
+    pool += numbers;
   }
-  else {
-    return;
-  }
+   
   //Click okay to confirm if you would like to include lowercase letters
   var addLower = confirm("Would you like to include lowercase characters?");
   if (addLower){
-    pool.concat(lowerCaseArray);
+    pool += lowerCase;
   }
-  else {
-    return;
-  }
+   
   //Click okay to confirm if you would like to include uppercase letters
   var addUpper = confirm("Would you like to include uppercase characters?");
   if (addUpper){
-    pool.concat(upperCaseArray);
-  }
-  else {
-    return;
+    pool += upperCase;
   }
 
-  for (var i = 0; i < numberofCharas.length; i++){
-    passwordGenerated.push(pool[Math.floor(Math.random() * pool.length)]);
+  if (!addSpecial && !addNumeric && !addLower && !addUpper){
+    return alert("You have to choose at least one type of character.")
+  }
+  
+  console.log(pool, "message");
+  for (var i = 0; i < numberofCharas; i++){
+    passwordGenerated += pool[Math.floor(Math.random() * pool.length)];
   }
 
   // window.alert("Your password is " + passwordGenerated);
-
+  console.log(passwordGenerated, "password");
   return passwordGenerated;
 }
 
