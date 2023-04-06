@@ -1,21 +1,29 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// function will take in user input to generate a password
 function generatePassword(){
-  // Add pool of characters to use for password
+  // Add pool of characters in a string to use for password
   var lowerCase = "abcdefghijklmnopqrstuvwxyz";
   var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var specialChara = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
   var numbers = "0123456789"
+  
+  // Empty pool array will have the above string variables added in after user input
   var pool = [];
+
+  // Empty passwordGenerated array will hold a certain amount of random characters based on what the user inputs 
   var passwordGenerated = [];
 
-  // spread operator - pool.push(...)
+  // numberofCharas will take in user input of how long they want their password to be
   var numberofCharas = parseInt(prompt("How many characters do you want your password to have?"));
-  console.log(numberofCharas);
+  
+  // If numberofCharas is not input as a number or is exited out of, an alert will pop up and code will not execute
   if (!numberofCharas){
     return alert("Password length must be provided as a number.");
   }
+
+  // If numberofCharas is not within 8-128, an alert will pop up and the code will not execute
   if (numberofCharas > 128){
     return alert("Please choose a number less than 128.")
   }
@@ -23,41 +31,38 @@ function generatePassword(){
     return alert("Please choose a number more than 8.")
   }
 
-  //Click okay to confirm if you would like to include special characters
+  // addSpecial, addNumeric, addLower and addUpper variables will take in user confirmation if they want to use each set of characters and add them to the pool array
   var addSpecial = confirm("Would you like to include special characters?");
   if (addSpecial){
     pool += specialChara;
   }
    
-  //Click okay to confirm if you would like to include numeric characters
   var addNumeric = confirm("Would you like to include numeric characters?");
   if (addNumeric){
     pool += numbers;
   }
    
-  //Click okay to confirm if you would like to include lowercase letters
   var addLower = confirm("Would you like to include lowercase characters?");
   if (addLower){
     pool += lowerCase;
   }
    
-  //Click okay to confirm if you would like to include uppercase letters
   var addUpper = confirm("Would you like to include uppercase characters?");
   if (addUpper){
     pool += upperCase;
   }
 
+  // If all of the confirmations are cancelled out of, an alert will pop up and code will not execute
   if (!addSpecial && !addNumeric && !addLower && !addUpper){
     return alert("You have to choose at least one type of character.")
   }
-  
-  console.log(pool, "message");
+
+  // Will loop and add a random character from the pool array to the passwordGenerated array for the length of the password that the user input previously
   for (var i = 0; i < numberofCharas; i++){
     passwordGenerated += pool[Math.floor(Math.random() * pool.length)];
   }
 
-  // window.alert("Your password is " + passwordGenerated);
-  console.log(passwordGenerated, "password");
+  // The function generatePassword will return the value from the passwordGenerated array
   return passwordGenerated;
 }
 
