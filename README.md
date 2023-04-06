@@ -14,9 +14,9 @@ This website has one purpose, and that is to generate a random password given th
 
 <img src="./images/password-generator-site.png" width= 500px />
 
-<a href="https://github.com/elvislau74/Password-Generator">Click here for the GitHub Repository</a>
+<a href="https://github.com/elvislau74/password-generator">Click here for the GitHub Repository</a>
 
-<a href="https://elvislau74.github.io/Password-Generator/">Click here for the Live Site</a>
+<a href="https://elvislau74.github.io/password-generator/">Click here for the Live Site</a>
 
 ## Credits
 N/A
